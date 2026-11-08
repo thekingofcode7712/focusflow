@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.tmp.FocusFlow</id>
+  <name>FocusFlow</name>
+  <summary>A calm local-first focus planner for GNOME</summary>
+  <developer id="com.tmp">
+    <name>TMP Inc</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <description>
+    <p>FocusFlow helps you turn a busy day into a small set of meaningful next steps.</p>
+    <p>Plan tasks, start a focused Pomodoro session, and see your progress without accounts, ads, or distractions. Your data stays on your computer.</p>
+  </description>
+  <launchable type="desktop-id">com.tmp.FocusFlow.desktop</launchable>
+  <url type="homepage">https://github.com/tmp-inc/focusflow</url>
+  <url type="bugtracker">https://github.com/tmp-inc/focusflow/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-11-08">
+      <description><p>First public release of FocusFlow for GNOME.</p></description>
+    </release>
+  </releases>
+  <provides><binary>focusflow</binary></provides>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+</component>

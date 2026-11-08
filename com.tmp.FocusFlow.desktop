@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FocusFlow
+Comment=Plan your day and protect your focus
+Exec=focusflow
+Icon=com.tmp.FocusFlow
+Terminal=false
+Type=Application
+Categories=Office;Utility;GTK;
+Keywords=focus;pomodoro;tasks;productivity;timer;
+StartupNotify=true

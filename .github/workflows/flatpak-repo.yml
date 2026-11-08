@@ -1,0 +1,64 @@
+name: Build and publish Flatpak repository
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install Flatpak tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder appstream appstream-compose gnupg
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.gnome.Sdk//49 org.gnome.Platform//49
+
+      - name: Import repository signing key
+        env:
+          FLATPAK_GPG_PRIVATE_KEY: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          printf '%s' "$FLATPAK_GPG_PRIVATE_KEY" | gpg --batch --import
+
+      - name: Build Flatpak repository
+        env:
+          FLATPAK_GPG_KEY_ID: ${{ secrets.FLATPAK_GPG_KEY_ID }}
+        run: |
+          flatpak-builder --user --repo=repo --force-clean build-dir com.tmp.FocusFlow.yml
+          flatpak build-update-repo --gpg-sign="$FLATPAK_GPG_KEY_ID" --generate-static-deltas repo
+          cp tmp-inc.flatpakrepo repo/tmp-inc.flatpakrepo
+          cp com.tmp.FocusFlow.flatpakref repo/com.tmp.FocusFlow.flatpakref
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><title>TMP Inc Flatpak Repository</title><h1>TMP Inc Flatpak Repository</h1><p>Install FocusFlow from <a href="tmp-inc.flatpakrepo">the TMP Inc Flatpak repository</a>.</p>' > repo/index.html
+
+      - name: Upload repository
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: repo
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -9,12 +9,21 @@ No permission is granted to copy, modify, merge, publish, redistribute,
 sublicense, sell, or create derivative works from this software except under a
 written license agreement signed by TMP Inc. TMP Inc. grants end users a
 limited, non-exclusive, non-transferable license to install and use the
-official binary release obtained from a TMP Inc.-controlled Flatpak repository.
+official binary release obtained from a TMP Inc.-controlled Flatpak repository
+or from Flathub.
+
+Flathub distribution permission: TMP Inc. grants Flathub and its operators a
+limited, non-exclusive, worldwide, royalty-free license to copy, store, build,
+sign, mirror, publicly display, and redistribute the official FocusFlow source
+and binary Flatpak through Flathub and its mirrors. This permission is limited
+to operating the Flathub service and does not grant end users permission to
+modify, relicense, or redistribute FocusFlow outside authorized channels.
 
 You may view this repository for evaluation and development discussions only.
-Any redistribution outside an official TMP Inc.-controlled channel, production
-use beyond the official binary release, commercial use, or inclusion in another
-software package requires prior written permission from TMP Inc.
+Any redistribution outside Flathub, an official TMP Inc.-controlled channel,
+or another channel expressly authorized by TMP Inc; production use beyond the
+official binary release; commercial use; or inclusion in another software
+package requires prior written permission from TMP Inc.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED. TMP INC. SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER

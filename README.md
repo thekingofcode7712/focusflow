@@ -2,7 +2,7 @@
 
 A proprietary, local-first focus planner for GNOME, developed and distributed by TMP Inc.
 
-Copyright © 2026 TMP Inc. All rights reserved. FocusFlow is proprietary software. Use, copying, modification, redistribution, and commercial distribution require written permission from TMP Inc.
+Copyright © 2026 TMP Inc. All rights reserved. FocusFlow is proprietary software. Use, copying, modification, redistribution, and commercial distribution require written permission from TMP Inc. TMP Inc. separately authorizes Flathub to host, build, mirror, and redistribute official FocusFlow Flatpaks through the Flathub service.
 
 FocusFlow combines a lightweight task list with focused Pomodoro sessions and a clear daily progress view. It is designed to feel at home on the GNOME desktop: keyboard-friendly, distraction-free, and fully usable without an account or network connection.
 
@@ -43,4 +43,4 @@ flatpak run com.tmp.FocusFlow
 
 ## Distribution notes
 
-Before submitting to a software catalog, replace the placeholder developer contact in the metainfo file, add screenshots to `screenshots/`, and publish the source repository or release archive at a stable tag. Because FocusFlow is proprietary, confirm that the target catalog accepts proprietary applications and review its source-availability and licensing policies first.
+Before submitting to a software catalog, replace the placeholder developer contact in the metainfo file, add screenshots to `screenshots/`, and publish the source repository or release archive at a stable tag. FocusFlow remains proprietary; the license grants Flathub a limited distribution permission for operating its service, while end users do not receive general rights to modify or redistribute the software.

@@ -72,7 +72,9 @@ class FocusFlowWindow(Adw.ApplicationWindow):
         menu = Gio.Menu()
         menu.append("Keyboard shortcuts", "win.shortcuts")
         menu.append("About FocusFlow", "app.about")
-        header.set_menu_model(menu)
+        menu_button = Gtk.MenuButton(icon_name="open-menu-symbolic", tooltip_text="Application menu")
+        menu_button.set_menu_model(menu)
+        header.pack_end(menu_button)
 
         self.toast_overlay = Adw.ToastOverlay()
         self.set_content(self.toast_overlay)

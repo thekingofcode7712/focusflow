@@ -31,12 +31,12 @@ jobs:
 
       - name: Import repository signing key
         env:
-          FLATPAK_GPG_PRIVATE_KEY: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY }}
+          FLATPAK_GPG_PRIVATE_KEY_B64: ${{ secrets.FLATPAK_GPG_PRIVATE_KEY_B64 }}
         run: |
           mkdir -p ~/.gnupg
           chmod 700 ~/.gnupg
           echo "GNUPGHOME=$HOME/.gnupg" >> "$GITHUB_ENV"
-          printf '%s' "$FLATPAK_GPG_PRIVATE_KEY" | gpg --batch --import
+          printf '%s' "$FLATPAK_GPG_PRIVATE_KEY_B64" | base64 --decode | gpg --batch --import
 
       - name: Build Flatpak repository
         env:

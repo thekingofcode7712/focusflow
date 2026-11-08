@@ -35,12 +35,15 @@ jobs:
         run: |
           mkdir -p ~/.gnupg
           chmod 700 ~/.gnupg
+          echo "GNUPGHOME=$HOME/.gnupg" >> "$GITHUB_ENV"
           printf '%s' "$FLATPAK_GPG_PRIVATE_KEY" | gpg --batch --import
 
       - name: Build Flatpak repository
         env:
           FLATPAK_GPG_KEY_ID: ${{ secrets.FLATPAK_GPG_KEY_ID }}
         run: |
+          export GNUPGHOME="$HOME/.gnupg"
+          gpg --batch --list-secret-keys "$FLATPAK_GPG_KEY_ID" >/dev/null
           flatpak-builder --user --repo=repo --force-clean build-dir com.tmp.FocusFlow.yml
           flatpak build-update-repo --gpg-sign="$FLATPAK_GPG_KEY_ID" --generate-static-deltas repo
           cp tmp-inc.flatpakrepo repo/tmp-inc.flatpakrepo

@@ -23,5 +23,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/thekingofcode7712/focusflow.git
-        tag: v1.0.0
-        commit: 15cf663abf01b95d466fc30877b881c4ded61bef
+        tag: v1.0.1
+        commit: 694bd59c8990873aeeffa7ca4c621d4333dca6d4
